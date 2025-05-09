@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" class="light">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Premium Bricks - Quality You Can Build On</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -11,17 +12,54 @@
     }
   </script>
   <style>
-    .toggle-checkbox:checked {
-      right: 0;
-      border-color: #68D391;
+    .theme-toggle {
+      position: relative;
+      display: inline-block;
+      width: 3.5rem;
+      height: 2rem;
     }
-    .toggle-checkbox:checked + .toggle-label {
-      background-color: #68D391;
+
+    .theme-toggle input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .theme-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #d1d5db;
+      transition: .3s;
+      border-radius: 2rem;
+    }
+
+    .theme-slider:before {
+      position: absolute;
+      content: "";
+      height: 1.5rem;
+      width: 1.5rem;
+      left: 0.25rem;
+      bottom: 0.25rem;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .theme-slider {
+      background-color: #10b981;
+    }
+
+    input:checked + .theme-slider:before {
+      transform: translateX(1.5rem);
     }
   </style>
 </head>
 
-<body class="font-sans text-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200 transition-colors duration-300">
+<body class="font-sans text-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200">
   <!-- Header -->
   <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
@@ -32,86 +70,76 @@
           <a href="#projects" class="hover:text-red-600 dark:hover:text-red-400">Projects</a>
           <a href="#about" class="hover:text-red-600 dark:hover:text-red-400">About</a>
           <a href="#contact" class="hover:text-red-600 dark:hover:text-red-400">Contact</a>
+          <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 dark:hover:bg-red-700">Get a Quote</a>
         </nav>
-        
-        <!-- Theme Toggle -->
-        <div class="flex items-center">
-          <label class="flex items-center cursor-pointer">
-            <div class="relative">
-              <input type="checkbox" id="theme-toggle" class="sr-only" onclick="toggleTheme()">
-              <div class="block bg-gray-600 w-14 h-8 rounded-full"></div>
-              <div class="dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition"></div>
-            </div>
-            <div class="ml-3 text-gray-700 dark:text-gray-300 font-medium hidden sm:block">
-              Dark Mode
-            </div>
+        <div class="flex items-center gap-2">
+          <span class="text-sm text-gray-600 dark:text-gray-300 hidden sm:inline">Dark Mode</span>
+          <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="theme-slider"></span>
           </label>
         </div>
-        
-        <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 dark:hover:bg-red-700">Get a Quote</a>
       </div>
     </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
+  <section class="bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2070&q=80')">
     <div class="bg-black bg-opacity-50 dark:bg-opacity-70 p-8 rounded">
       <h1 class="text-4xl font-bold mb-4">Quality Brick Solutions for Every Project</h1>
-      <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-6 py-3 rounded text-lg hover:bg-red-800 dark:hover:bg-red-700">Request a Free Estimate</a>
+      <a href="#quote" class="bg-red-700 dark:bg-red-600 px-6 py-3 rounded text-lg hover:bg-red-800 dark:hover:bg-red-700">Request a Free Estimate</a>
     </div>
   </section>
 
   <!-- Products Section -->
   <section id="products" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center dark:text-white">Our Brick Products</h2>
+      <h2 class="text-3xl font-bold mb-8 text-center">Our Brick Products</h2>
       <div class="grid md:grid-cols-3 gap-6">
-        <!-- Product 1 -->
+        <!-- Product Cards -->
         <div class="bg-white dark:bg-gray-700 shadow-md p-4 rounded">
-          <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Red Brick" class="mb-4 rounded w-full h-48 object-cover">
-          <h3 class="font-bold text-xl mb-2 dark:text-white">Classic Red Brick</h3>
-          <p class="dark:text-gray-300">Size: 200x100x65mm<br>Use: Residential & Commercial</p>
+          <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?auto=format&fit=crop&w=2070&q=80" alt="Red Brick" class="mb-4 rounded w-full h-48 object-cover">
+          <h3 class="font-bold text-xl mb-2">Classic Red Brick</h3>
+          <p>Size: 200x100x65mm<br>Use: Residential & Commercial</p>
         </div>
-        <!-- Product 2 -->
         <div class="bg-white dark:bg-gray-700 shadow-md p-4 rounded">
           <img src="https://images.pexels.com/photos/221027/pexels-photo-221027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="White Brick" class="mb-4 rounded w-full h-48 object-cover">
-          <h3 class="font-bold text-xl mb-2 dark:text-white">Premium White Brick</h3>
-          <p class="dark:text-gray-300">Size: 200x100x65mm<br>Use: Luxury Homes</p>
+          <h3 class="font-bold text-xl mb-2">Premium White Brick</h3>
+          <p>Size: 200x100x65mm<br>Use: Luxury Homes</p>
         </div>
-        <!-- Product 3 -->
         <div class="bg-white dark:bg-gray-700 shadow-md p-4 rounded">
           <img src="https://images.pexels.com/photos/1061623/pexels-photo-1061623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Textured Brick" class="mb-4 rounded w-full h-48 object-cover">
-          <h3 class="font-bold text-xl mb-2 dark:text-white">Textured Brick</h3>
-          <p class="dark:text-gray-300">Size: 200x100x65mm<br>Use: Feature Walls</p>
+          <h3 class="font-bold text-xl mb-2">Textured Brick</h3>
+          <p>Size: 200x100x65mm<br>Use: Feature Walls</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Projects Gallery -->
-  <section id="projects" class="py-16 bg-white dark:bg-gray-900">
+  <section id="projects" class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center dark:text-white">Completed Projects</h2>
+      <h2 class="text-3xl font-bold mb-8 text-center">Completed Projects</h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white dark:bg-gray-700 shadow-md rounded overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Project 1" class="w-full h-64 object-cover">
+          <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?auto=format&fit=crop&w=2080&q=80" alt="Project 1" class="w-full h-64 object-cover">
           <div class="p-4">
-            <h3 class="font-semibold text-lg dark:text-white">Residential Villa - 2023</h3>
-            <p class="dark:text-gray-300">Location: Chennai</p>
+            <h3 class="font-semibold text-lg">Residential Villa - 2023</h3>
+            <p>Location: Chennai</p>
           </div>
         </div>
         <div class="bg-white dark:bg-gray-700 shadow-md rounded overflow-hidden">
           <img src="https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Project 2" class="w-full h-64 object-cover">
           <div class="p-4">
-            <h3 class="font-semibold text-lg dark:text-white">Commercial Complex - 2022</h3>
-            <p class="dark:text-gray-300">Location: Bangalore</p>
+            <h3 class="font-semibold text-lg">Commercial Complex - 2022</h3>
+            <p>Location: Bangalore</p>
           </div>
         </div>
         <div class="bg-white dark:bg-gray-700 shadow-md rounded overflow-hidden">
-          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Project 3" class="w-full h-64 object-cover">
+          <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=2070&q=80" alt="Project 3" class="w-full h-64 object-cover">
           <div class="p-4">
-            <h3 class="font-semibold text-lg dark:text-white">Heritage Restoration - 2021</h3>
-            <p class="dark:text-gray-300">Location: Hyderabad</p>
+            <h3 class="font-semibold text-lg">Heritage Restoration - 2021</h3>
+            <p>Location: Hyderabad</p>
           </div>
         </div>
       </div>
@@ -121,23 +149,23 @@
   <!-- About Section -->
   <section id="about" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4 dark:text-white">About Premium Bricks</h2>
-      <p class="max-w-3xl mx-auto dark:text-gray-300">We are a trusted name in brick manufacturing, delivering quality since 1990. With a commitment to strength, durability, and beauty, we supply premium bricks across industries and geographies.</p>
+      <h2 class="text-3xl font-bold mb-4">About Premium Bricks</h2>
+      <p class="max-w-3xl mx-auto">We are a trusted name in brick manufacturing, delivering quality since 1990. With a commitment to strength, durability, and beauty, we supply premium bricks across industries and geographies.</p>
     </div>
   </section>
 
   <!-- Testimonials -->
-  <section class="py-16 bg-white dark:bg-gray-900">
+  <section class="py-16">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-8 dark:text-white">What Our Clients Say</h2>
+      <h2 class="text-3xl font-bold mb-8">What Our Clients Say</h2>
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-white dark:bg-gray-700 shadow p-6 rounded">
-          <p class="italic dark:text-gray-300">"The bricks are top quality and service was excellent."</p>
-          <p class="mt-4 font-bold dark:text-white">– John D., Contractor</p>
+          <p class="italic">"The bricks are top quality and service was excellent."</p>
+          <p class="mt-4 font-bold">– John D., Contractor</p>
         </div>
         <div class="bg-white dark:bg-gray-700 shadow p-6 rounded">
-          <p class="italic dark:text-gray-300">"Premium Bricks delivered on time and the materials exceeded our expectations."</p>
-          <p class="mt-4 font-bold dark:text-white">– Sarah M., Architect</p>
+          <p class="italic">"Premium Bricks delivered on time and the materials exceeded our expectations."</p>
+          <p class="mt-4 font-bold">– Sarah M., Architect</p>
         </div>
       </div>
     </div>
@@ -146,27 +174,27 @@
   <!-- Contact Section -->
   <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center dark:text-white">Contact Us</h2>
+      <h2 class="text-3xl font-bold mb-8 text-center">Contact Us</h2>
       <form class="max-w-xl mx-auto space-y-4">
-        <input type="text" placeholder="Your Name" class="w-full p-3 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-        <input type="email" placeholder="Your Email" class="w-full p-3 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
-        <textarea placeholder="Your Message" class="w-full p-3 border rounded dark:bg-gray-700 dark:border-gray-600 dark:text-white" rows="5"></textarea>
+        <input type="text" placeholder="Your Name" class="w-full p-3 border rounded" required>
+        <input type="email" placeholder="Your Email" class="w-full p-3 border rounded" required>
+        <textarea placeholder="Your Message" class="w-full p-3 border rounded" rows="5"></textarea>
         <button class="bg-red-700 dark:bg-red-600 text-white px-6 py-3 rounded hover:bg-red-800 dark:hover:bg-red-700">Send Message</button>
       </form>
     </div>
   </section>
 
   <!-- Quote Section -->
-  <section id="quote" class="py-16 bg-white dark:bg-gray-900">
+  <section id="quote" class="py-16">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4 dark:text-white">Get a Custom Quote</h2>
-      <p class="mb-6 dark:text-gray-300">Tell us about your project and we'll provide a customized solution.</p>
+      <h2 class="text-3xl font-bold mb-4">Get a Custom Quote</h2>
+      <p class="mb-6">Tell us about your project and we’ll provide a customized solution.</p>
       <a href="#contact" class="bg-red-700 dark:bg-red-600 text-white px-6 py-3 rounded hover:bg-red-800 dark:hover:bg-red-700">Contact Now</a>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 dark:bg-gray-950 text-white py-8">
+  <footer class="bg-gray-800 text-white py-8">
     <div class="container mx-auto px-4 text-center">
       <p>&copy; 2025 Premium Bricks. All rights reserved.</p>
       <p>123 Brick Lane, Chennai | +91-98765-43210 | info@premiumbricks.com</p>
@@ -174,27 +202,28 @@
   </footer>
 
   <script>
-    // Check for saved theme preference
-    if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-      document.getElementById('theme-toggle').checked = true;
+    const themeToggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    if (localStorage.getItem('theme') === 'dark' ||
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      themeToggle.checked = true;
     } else {
-      document.documentElement.classList.remove('dark');
-      document.getElementById('theme-toggle').checked = false;
+      html.classList.remove('dark');
+      themeToggle.checked = false;
     }
 
-    function toggleTheme() {
-      const html = document.documentElement;
-      const toggle = document.getElementById('theme-toggle');
-      
-      if (toggle.checked) {
+    themeToggle.addEventListener('change', function () {
+      if (this.checked) {
         html.classList.add('dark');
         localStorage.setItem('theme', 'dark');
       } else {
         html.classList.remove('dark');
         localStorage.setItem('theme', 'light');
       }
-    }
+    });
   </script>
 </body>
+
 </html>
