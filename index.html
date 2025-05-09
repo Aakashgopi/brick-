@@ -11,20 +11,20 @@
     }
   </script>
   <style>
-    .theme-toggle {
+    .theme-toggle, .language-toggle {
       position: relative;
       display: inline-block;
       width: 3.5rem;
       height: 2rem;
     }
     
-    .theme-toggle input {
+    .theme-toggle input, .language-toggle input {
       opacity: 0;
       width: 0;
       height: 0;
     }
     
-    .theme-slider {
+    .theme-slider, .language-slider {
       position: absolute;
       cursor: pointer;
       top: 0;
@@ -36,7 +36,7 @@
       border-radius: 2rem;
     }
     
-    .theme-slider:before {
+    .theme-slider:before, .language-slider:before {
       position: absolute;
       content: "";
       height: 1.5rem;
@@ -52,8 +52,28 @@
       background-color: #10b981;
     }
     
-    input:checked + .theme-slider:before {
+    input:checked + .theme-slider:before,
+    input:checked + .language-slider:before {
       transform: translateX(1.5rem);
+    }
+
+    input:checked + .language-slider {
+      background-color: #3b82f6;
+    }
+
+    /* Hide Tamil content by default */
+    [lang="ta"] {
+      display: none;
+    }
+
+    /* Show Tamil content when Tamil language is selected */
+    .tamil-active [lang="ta"] {
+      display: block;
+    }
+
+    /* Hide English content when Tamil is selected */
+    .tamil-active [lang="en"] {
+      display: none;
     }
   </style>
 </head>
@@ -62,25 +82,55 @@
   <!-- Header -->
   <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold text-red-700 dark:text-red-400">Premium Bricks</div>
+      <div class="text-2xl font-bold text-red-700 dark:text-red-400">
+        <span lang="en">Premium Bricks</span>
+        <span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள்</span>
+      </div>
       <div class="flex items-center gap-6">
         <nav class="hidden md:flex space-x-6">
-          <a href="#products" class="hover:text-red-600 dark:hover:text-red-400">Products</a>
-          <a href="#projects" class="hover:text-red-600 dark:hover:text-red-400">Projects</a>
-          <a href="#about" class="hover:text-red-600 dark:hover:text-red-400">About</a>
-          <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 dark:hover:bg-red-700">Get a Quote</a>
+          <a href="#products" class="hover:text-red-600 dark:hover:text-red-400">
+            <span lang="en">Products</span>
+            <span lang="ta" class="font-tamil">தயாரிப்புகள்</span>
+          </a>
+          <a href="#projects" class="hover:text-red-600 dark:hover:text-red-400">
+            <span lang="en">Projects</span>
+            <span lang="ta" class="font-tamil">திட்டங்கள்</span>
+          </a>
+          <a href="#about" class="hover:text-red-600 dark:hover:text-red-400">
+            <span lang="en">About</span>
+            <span lang="ta" class="font-tamil">பற்றி</span>
+          </a>
+          <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 dark:hover:bg-red-700">
+            <span lang="en">Get a Quote</span>
+            <span lang="ta" class="font-tamil">விலைப்புள்ளி பெற</span>
+          </a>
         </nav>
         
-        <!-- WhatsApp and Theme Toggle -->
+        <!-- Language and Theme Toggles -->
         <div class="flex items-center gap-4">
+          <!-- WhatsApp -->
           <a href="https://wa.me/919751063609" class="flex items-center gap-1 text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
               <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
             </svg>
-            <span class="hidden sm:inline">WhatsApp</span>
+            <span class="hidden sm:inline" lang="en">WhatsApp</span>
+            <span class="hidden sm:inline" lang="ta">வாட்ஸ்அப்</span>
           </a>
+          
+          <!-- Language Toggle -->
           <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-600 dark:text-gray-300 hidden sm:inline">Dark Mode</span>
+            <span class="text-sm text-gray-600 dark:text-gray-300 hidden sm:inline" lang="en">Tamil</span>
+            <span class="text-sm text-gray-600 dark:text-gray-300" lang="ta">தமிழ்</span>
+            <label class="language-toggle">
+              <input type="checkbox" id="language-toggle">
+              <span class="language-slider"></span>
+            </label>
+          </div>
+          
+          <!-- Theme Toggle -->
+          <div class="flex items-center gap-2">
+            <span class="text-sm text-gray-600 dark:text-gray-300 hidden sm:inline" lang="en">Dark Mode</span>
+            <span class="text-sm text-gray-600 dark:text-gray-300 hidden sm:inline" lang="ta">டார்க் மோட்</span>
             <label class="theme-toggle">
               <input type="checkbox" id="theme-toggle">
               <span class="theme-slider"></span>
@@ -94,36 +144,72 @@
   <!-- Hero Section -->
   <section class="bg-cover bg-center h-screen flex items-center justify-center text-white" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')">
     <div class="bg-black bg-opacity-50 dark:bg-opacity-70 p-8 rounded">
-      <h1 class="text-4xl font-bold mb-4">Quality Brick Solutions for Every Project</h1>
-      <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-6 py-3 rounded text-lg hover:bg-red-800 dark:hover:bg-red-700">Request a Free Estimate</a>
+      <h1 class="text-4xl font-bold mb-4">
+        <span lang="en">Quality Brick Solutions for Every Project</span>
+        <span lang="ta" class="font-tamil">ஒவ்வொரு திட்டத்திற்கும் தரமான செங்கல் தீர்வுகள்</span>
+      </h1>
+      <a href="#quote" class="bg-red-700 dark:bg-red-600 text-white px-6 py-3 rounded text-lg hover:bg-red-800 dark:hover:bg-red-700">
+        <span lang="en">Request a Free Estimate</span>
+        <span lang="ta" class="font-tamil">இலவமான மதிப்பீட்டை கோரவும்</span>
+      </a>
     </div>
   </section>
 
   <!-- Products Section -->
   <section id="products" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center">Our Brick Products</h2>
+      <h2 class="text-3xl font-bold mb-8 text-center">
+        <span lang="en">Our Brick Products</span>
+        <span lang="ta" class="font-tamil">எங்கள் செங்கல் தயாரிப்புகள்</span>
+      </h2>
       <div class="grid md:grid-cols-3 gap-6">
         <!-- Product 1 -->
         <div class="bg-white dark:bg-gray-700 shadow-md p-4 rounded hover:shadow-lg transition-shadow">
           <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Red Brick" class="mb-4 rounded w-full h-48 object-cover">
-          <h3 class="font-bold text-xl mb-2">Classic Red Brick</h3>
-          <p class="dark:text-gray-300">Size: 200x100x65mm<br>Use: Residential & Commercial</p>
-          <button class="mt-4 text-red-700 dark:text-red-400 font-semibold hover:underline">View Details</button>
+          <h3 class="font-bold text-xl mb-2">
+            <span lang="en">Classic Red Brick</span>
+            <span lang="ta" class="font-tamil">கிளாசிக் சிவப்பு செங்கல்</span>
+          </h3>
+          <p class="dark:text-gray-300">
+            <span lang="en">Size: 200x100x65mm<br>Use: Residential & Commercial</span>
+            <span lang="ta" class="font-tamil">அளவு: 200x100x65mm<br>பயன்பாடு: குடியிருப்பு & வணிக</span>
+          </p>
+          <button class="mt-4 text-red-700 dark:text-red-400 font-semibold hover:underline">
+            <span lang="en">View Details</span>
+            <span lang="ta" class="font-tamil">விவரங்களைக் காண்க</span>
+          </button>
         </div>
         <!-- Product 2 -->
         <div class="bg-white dark:bg-gray-700 shadow-md p-4 rounded hover:shadow-lg transition-shadow">
           <img src="https://images.pexels.com/photos/221027/pexels-photo-221027.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="White Brick" class="mb-4 rounded w-full h-48 object-cover">
-          <h3 class="font-bold text-xl mb-2">Premium White Brick</h3>
-          <p class="dark:text-gray-300">Size: 200x100x65mm<br>Use: Luxury Homes</p>
-          <button class="mt-4 text-red-700 dark:text-red-400 font-semibold hover:underline">View Details</button>
+          <h3 class="font-bold text-xl mb-2">
+            <span lang="en">Premium White Brick</span>
+            <span lang="ta" class="font-tamil">பிரீமியம் வெள்ளை செங்கல்</span>
+          </h3>
+          <p class="dark:text-gray-300">
+            <span lang="en">Size: 200x100x65mm<br>Use: Luxury Homes</span>
+            <span lang="ta" class="font-tamil">அளவு: 200x100x65mm<br>பயன்பாடு: ஆடம்பர வீடுகள்</span>
+          </p>
+          <button class="mt-4 text-red-700 dark:text-red-400 font-semibold hover:underline">
+            <span lang="en">View Details</span>
+            <span lang="ta" class="font-tamil">விவரங்களைக் காண்க</span>
+          </button>
         </div>
         <!-- Product 3 -->
         <div class="bg-white dark:bg-gray-700 shadow-md p-4 rounded hover:shadow-lg transition-shadow">
           <img src="https://images.pexels.com/photos/1061623/pexels-photo-1061623.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Textured Brick" class="mb-4 rounded w-full h-48 object-cover">
-          <h3 class="font-bold text-xl mb-2">Textured Brick</h3>
-          <p class="dark:text-gray-300">Size: 200x100x65mm<br>Use: Feature Walls</p>
-          <button class="mt-4 text-red-700 dark:text-red-400 font-semibold hover:underline">View Details</button>
+          <h3 class="font-bold text-xl mb-2">
+            <span lang="en">Textured Brick</span>
+            <span lang="ta" class="font-tamil">அமைப்பு செங்கல்</span>
+          </h3>
+          <p class="dark:text-gray-300">
+            <span lang="en">Size: 200x100x65mm<br>Use: Feature Walls</span>
+            <span lang="ta" class="font-tamil">அளவு: 200x100x65mm<br>பயன்பாடு: அம்ச சுவர்கள்</span>
+          </p>
+          <button class="mt-4 text-red-700 dark:text-red-400 font-semibold hover:underline">
+            <span lang="en">View Details</span>
+            <span lang="ta" class="font-tamil">விவரங்களைக் காண்க</span>
+          </button>
         </div>
       </div>
     </div>
@@ -132,27 +218,48 @@
   <!-- Projects Gallery -->
   <section id="projects" class="py-16">
     <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-8 text-center">Completed Projects</h2>
+      <h2 class="text-3xl font-bold mb-8 text-center">
+        <span lang="en">Completed Projects</span>
+        <span lang="ta" class="font-tamil">நிறைவடைந்த திட்டங்கள்</span>
+      </h2>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-white dark:bg-gray-700 shadow-md rounded overflow-hidden hover:shadow-lg transition-shadow">
           <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2080&q=80" alt="Project 1" class="w-full h-64 object-cover">
           <div class="p-4">
-            <h3 class="font-semibold text-lg">Residential Villa - 2023</h3>
-            <p class="dark:text-gray-300">Location: Chennai</p>
+            <h3 class="font-semibold text-lg">
+              <span lang="en">Residential Villa - 2023</span>
+              <span lang="ta" class="font-tamil">குடியிருப்பு வீடு - 2023</span>
+            </h3>
+            <p class="dark:text-gray-300">
+              <span lang="en">Location: Chennai</span>
+              <span lang="ta" class="font-tamil">இடம்: சென்னை</span>
+            </p>
           </div>
         </div>
         <div class="bg-white dark:bg-gray-700 shadow-md rounded overflow-hidden hover:shadow-lg transition-shadow">
           <img src="https://images.pexels.com/photos/323776/pexels-photo-323776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Project 2" class="w-full h-64 object-cover">
           <div class="p-4">
-            <h3 class="font-semibold text-lg">Commercial Complex - 2022</h3>
-            <p class="dark:text-gray-300">Location: Bangalore</p>
+            <h3 class="font-semibold text-lg">
+              <span lang="en">Commercial Complex - 2022</span>
+              <span lang="ta" class="font-tamil">வணிக வளாகம் - 2022</span>
+            </h3>
+            <p class="dark:text-gray-300">
+              <span lang="en">Location: Bangalore</span>
+              <span lang="ta" class="font-tamil">இடம்: பெங்களூர்</span>
+            </p>
           </div>
         </div>
         <div class="bg-white dark:bg-gray-700 shadow-md rounded overflow-hidden hover:shadow-lg transition-shadow">
           <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Project 3" class="w-full h-64 object-cover">
           <div class="p-4">
-            <h3 class="font-semibold text-lg">Heritage Restoration - 2021</h3>
-            <p class="dark:text-gray-300">Location: Hyderabad</p>
+            <h3 class="font-semibold text-lg">
+              <span lang="en">Heritage Restoration - 2021</span>
+              <span lang="ta" class="font-tamil">பாரம்பரிய மறுசீரமைப்பு - 2021</span>
+            </h3>
+            <p class="dark:text-gray-300">
+              <span lang="en">Location: Hyderabad</span>
+              <span lang="ta" class="font-tamil">இடம்: ஹைதராபாத்</span>
+            </p>
           </div>
         </div>
       </div>
@@ -162,20 +269,35 @@
   <!-- About Section -->
   <section id="about" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">About Premium Bricks</h2>
-      <p class="max-w-3xl mx-auto dark:text-gray-300">We are a trusted name in brick manufacturing, delivering quality since 1990. With a commitment to strength, durability, and beauty, we supply premium bricks across industries and geographies.</p>
+      <h2 class="text-3xl font-bold mb-4">
+        <span lang="en">About Premium Bricks</span>
+        <span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள் பற்றி</span>
+      </h2>
+      <p class="max-w-3xl mx-auto dark:text-gray-300">
+        <span lang="en">We are a trusted name in brick manufacturing, delivering quality since 1990. With a commitment to strength, durability, and beauty, we supply premium bricks across industries and geographies.</span>
+        <span lang="ta" class="font-tamil">1990 முதல் தரமான செங்கற்களை வழங்கும் ஒரு நம்பகமான செங்கல் உற்பத்தியாளர் நாங்கள். வலிமை, நீடித்தது மற்றும் அழகு ஆகியவற்றிற்கான உறுதிப்பாட்டுடன், நாங்கள் பல தொழில்களுக்கும் புவியியல் பகுதிகளுக்கும் பிரீமியம் செங்கற்களை வழங்குகிறோம்.</span>
+      </p>
       <div class="grid md:grid-cols-3 gap-8 mt-12">
         <div class="p-6">
-          <h3 class="text-xl font-bold mb-2 text-red-700 dark:text-red-400">30+ Years</h3>
-          <p class="dark:text-gray-300">Of industry experience</p>
+          <h3 class="text-xl font-bold mb-2 text-red-700 dark:text-red-400">30+ <span lang="en">Years</span><span lang="ta" class="font-tamil">ஆண்டுகள்</span></h3>
+          <p class="dark:text-gray-300">
+            <span lang="en">Of industry experience</span>
+            <span lang="ta" class="font-tamil">தொழில் அனுபவம்</span>
+          </p>
         </div>
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2 text-red-700 dark:text-red-400">500+</h3>
-          <p class="dark:text-gray-300">Completed projects</p>
+          <p class="dark:text-gray-300">
+            <span lang="en">Completed projects</span>
+            <span lang="ta" class="font-tamil">நிறைவடைந்த திட்டங்கள்</span>
+          </p>
         </div>
         <div class="p-6">
           <h3 class="text-xl font-bold mb-2 text-red-700 dark:text-red-400">100%</h3>
-          <p class="dark:text-gray-300">Customer satisfaction</p>
+          <p class="dark:text-gray-300">
+            <span lang="en">Customer satisfaction</span>
+            <span lang="ta" class="font-tamil">வாடிக்கையாளர் திருப்தி</span>
+          </p>
         </div>
       </div>
     </div>
@@ -184,15 +306,24 @@
   <!-- Testimonials -->
   <section class="py-16">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-8">What Our Clients Say</h2>
+      <h2 class="text-3xl font-bold mb-8">
+        <span lang="en">What Our Clients Say</span>
+        <span lang="ta" class="font-tamil">எங்கள் வாடிக்கையாளர்கள் என்ன சொல்கிறார்கள்</span>
+      </h2>
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-white dark:bg-gray-700 shadow p-6 rounded hover:shadow-lg transition-shadow">
-          <p class="italic dark:text-gray-300">"The bricks are top quality and service was excellent."</p>
-          <p class="mt-4 font-bold">– John D., Contractor</p>
+          <p class="italic dark:text-gray-300">
+            <span lang="en">"The bricks are top quality and service was excellent."</span>
+            <span lang="ta" class="font-tamil">"செங்கற்கள் மிக உயர்ந்த தரமானவை மற்றும் சேவை சிறப்பாக இருந்தது."</span>
+          </p>
+          <p class="mt-4 font-bold">– John D., <span lang="en">Contractor</span><span lang="ta" class="font-tamil">ஒப்பந்ததாரர்</span></p>
         </div>
         <div class="bg-white dark:bg-gray-700 shadow p-6 rounded hover:shadow-lg transition-shadow">
-          <p class="italic dark:text-gray-300">"Premium Bricks delivered on time and the materials exceeded our expectations."</p>
-          <p class="mt-4 font-bold">– Sarah M., Architect</p>
+          <p class="italic dark:text-gray-300">
+            <span lang="en">"Premium Bricks delivered on time and the materials exceeded our expectations."</span>
+            <span lang="ta" class="font-tamil">"பிரீமியம் செங்கற்கள் நேரத்தில் வழங்கப்பட்டன மற்றும் பொருட்கள் எங்கள் எதிர்பார்ப்புகளை மீறின."</span>
+          </p>
+          <p class="mt-4 font-bold">– Sarah M., <span lang="en">Architect</span><span lang="ta" class="font-tamil">கட்டிடக் கலைஞர்</span></p>
         </div>
       </div>
     </div>
@@ -201,13 +332,20 @@
   <!-- Quote Section -->
   <section id="quote" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4 text-center">
-      <h2 class="text-3xl font-bold mb-4">Get a Custom Quote</h2>
-      <p class="mb-6 dark:text-gray-300">Tell us about your project and we'll provide a customized solution.</p>
+      <h2 class="text-3xl font-bold mb-4">
+        <span lang="en">Get a Custom Quote</span>
+        <span lang="ta" class="font-tamil">தனிப்பயன் விலைப்புள்ளி பெற</span>
+      </h2>
+      <p class="mb-6 dark:text-gray-300">
+        <span lang="en">Tell us about your project and we'll provide a customized solution.</span>
+        <span lang="ta" class="font-tamil">உங்கள் திட்டத்தை எங்களிடம் கூறுங்கள், நாங்கள் ஒரு தனிப்பயன் தீர்வை வழங்குவோம்.</span>
+      </p>
       <a href="https://wa.me/919876543210" class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded inline-flex items-center gap-2">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
           <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
         </svg>
-        Message Us on WhatsApp
+        <span lang="en">Message Us on WhatsApp</span>
+        <span lang="ta" class="font-tamil">வாட்ஸ்அப்பில் எங்களுக்கு செய்தி அனுப்பவும்</span>
       </a>
     </div>
   </section>
@@ -217,26 +355,53 @@
     <div class="container mx-auto px-4">
       <div class="grid md:grid-cols-4 gap-8">
         <div>
-          <h3 class="text-xl font-bold mb-4">Premium Bricks</h3>
-          <p>Quality you can build on since 1990.</p>
+          <h3 class="text-xl font-bold mb-4">
+            <span lang="en">Premium Bricks</span>
+            <span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள்</span>
+          </h3>
+          <p>
+            <span lang="en">Quality you can build on since 1990.</span>
+            <span lang="ta" class="font-tamil">1990 முதல் நீங்கள் நம்பக்கூடிய தரம்.</span>
+          </p>
         </div>
         <div>
-          <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+          <h3 class="text-xl font-bold mb-4">
+            <span lang="en">Quick Links</span>
+            <span lang="ta" class="font-tamil">விரைவு இணைப்புகள்</span>
+          </h3>
           <ul class="space-y-2">
-            <li><a href="#products" class="hover:text-red-400">Products</a></li>
-            <li><a href="#projects" class="hover:text-red-400">Projects</a></li>
-            <li><a href="#about" class="hover:text-red-400">About Us</a></li>
-            <li><a href="#quote" class="hover:text-red-400">Get a Quote</a></li>
+            <li><a href="#products" class="hover:text-red-400">
+              <span lang="en">Products</span>
+              <span lang="ta" class="font-tamil">தயாரிப்புகள்</span>
+            </a></li>
+            <li><a href="#projects" class="hover:text-red-400">
+              <span lang="en">Projects</span>
+              <span lang="ta" class="font-tamil">திட்டங்கள்</span>
+            </a></li>
+            <li><a href="#about" class="hover:text-red-400">
+              <span lang="en">About Us</span>
+              <span lang="ta" class="font-tamil">எங்களைப் பற்றி</span>
+            </a></li>
+            <li><a href="#quote" class="hover:text-red-400">
+              <span lang="en">Get a Quote</span>
+              <span lang="ta" class="font-tamil">விலைப்புள்ளி பெற</span>
+            </a></li>
           </ul>
         </div>
         <div>
-          <h3 class="text-xl font-bold mb-4">Contact</h3>
+          <h3 class="text-xl font-bold mb-4">
+            <span lang="en">Contact</span>
+            <span lang="ta" class="font-tamil">தொடர்பு</span>
+          </h3>
           <p>123 Brick Lane, Chennai</p>
           <p>+91-98765-43210</p>
           <p>info@premiumbricks.com</p>
         </div>
         <div>
-          <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+          <h3 class="text-xl font-bold mb-4">
+            <span lang="en">Follow Us</span>
+            <span lang="ta" class="font-tamil">எங்களைப் பின்தொடரவும்</span>
+          </h3>
           <div class="flex space-x-4">
             <a href="#" class="hover:text-red-400">Facebook</a>
             <a href="#" class="hover:text-red-400">Instagram</a>
@@ -245,7 +410,7 @@
         </div>
       </div>
       <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-        <p>&copy; 2025 Premium Bricks. All rights reserved.</p>
+        <p>&copy; 2025 <span lang="en">Premium Bricks. All rights reserved.</span><span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
       </div>
     </div>
   </footer>
@@ -273,6 +438,26 @@
       } else {
         html.classList.remove('dark');
         localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // Initialize language toggle
+    const languageToggle = document.getElementById('language-toggle');
+    
+    // Check for saved language preference
+    if (localStorage.getItem('language') === 'tamil') {
+      document.body.classList.add('tamil-active');
+      languageToggle.checked = true;
+    }
+    
+    // Toggle language on switch
+    languageToggle.addEventListener('change', function() {
+      if (this.checked) {
+        document.body.classList.add('tamil-active');
+        localStorage.setItem('language', 'tamil');
+      } else {
+        document.body.classList.remove('tamil-active');
+        localStorage.setItem('language', 'english');
       }
     });
   </script>
