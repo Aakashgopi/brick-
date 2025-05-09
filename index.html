@@ -11,6 +11,15 @@
     }
   </script>
   <style>
+    /* Custom Font Styling for PR Bricks (Option 3) */
+    .pr-bricks-brand {
+      font-family: 'Black Ops One', 'Arial Black', sans-serif;
+      font-size: 2.5rem;
+      color: #b71c1c;
+      text-shadow: 3px 3px 0px rgba(0,0,0,0.1);
+      letter-spacing: 1px;
+    }
+    
     .theme-toggle, .language-toggle {
       position: relative;
       display: inline-block;
@@ -61,33 +70,34 @@
       background-color: #3b82f6;
     }
 
-    /* Hide Tamil content by default */
+    /* Language Toggle Styles */
     [lang="ta"] {
       display: none;
     }
 
-    /* Show Tamil content when Tamil language is selected */
     .tamil-active [lang="ta"] {
       display: block;
     }
 
-    /* Hide English content when Tamil is selected */
     .tamil-active [lang="en"] {
       display: none;
     }
 
+    /* Tamil Font */
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil&display=swap');
     .font-tamil {
       font-family: 'Noto Sans Tamil', sans-serif;
     }
   </style>
+  <!-- Import Font for PR Bricks Branding -->
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
 </head>
 
 <body class="font-sans text-gray-800 bg-white dark:bg-gray-900 dark:text-gray-200">
   <!-- Header -->
   <header class="bg-white dark:bg-gray-800 shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-2xl font-bold text-red-700 dark:text-red-400">
+      <div class="pr-bricks-brand">
         <span lang="en">PR Bricks</span>
         <span lang="ta" class="font-tamil">பி.ஆர் செங்கற்கள்</span>
       </div>
@@ -115,8 +125,8 @@
         <div class="flex items-center gap-4">
           <!-- WhatsApp -->
           <a href="https://wa.me/919751063609" class="hover:opacity-80 transition-opacity">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-10 w-10">
-</a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" class="h-10 w-10">
+          </a>
           
           <!-- Language Toggle -->
           <div class="flex flex-col items-center gap-1">
@@ -269,8 +279,8 @@
   <section id="about" class="py-16 bg-gray-100 dark:bg-gray-800">
     <div class="container mx-auto px-4 text-center">
       <h2 class="text-3xl font-bold mb-4">
-        <span lang="en">About Premium Bricks</span>
-        <span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள் பற்றி</span>
+        <span lang="en">About PR Bricks</span>
+        <span lang="ta" class="font-tamil">பி.ஆர் செங்கற்கள் பற்றி</span>
       </h2>
       <p class="max-w-3xl mx-auto dark:text-gray-300">
         <span lang="en">We are a trusted name in brick manufacturing, delivering quality since 1990. With a commitment to strength, durability, and beauty, we supply premium bricks across industries and geographies.</span>
@@ -319,8 +329,8 @@
         </div>
         <div class="bg-white dark:bg-gray-700 shadow p-6 rounded hover:shadow-lg transition-shadow">
           <p class="italic dark:text-gray-300">
-            <span lang="en">"Premium Bricks delivered on time and the materials exceeded our expectations."</span>
-            <span lang="ta" class="font-tamil">"பிரீமியம் செங்கற்கள் நேரத்தில் வழங்கப்பட்டன மற்றும் பொருட்கள் எங்கள் எதிர்பார்ப்புகளை மீறின."</span>
+            <span lang="en">"PR Bricks delivered on time and the materials exceeded our expectations."</span>
+            <span lang="ta" class="font-tamil">"பி.ஆர் செங்கற்கள் நேரத்தில் வழங்கப்பட்டன மற்றும் பொருட்கள் எங்கள் எதிர்பார்ப்புகளை மீறின."</span>
           </p>
           <p class="mt-4 font-bold">– Sarah M., <span lang="en">Architect</span><span lang="ta" class="font-tamil">கட்டிடக் கலைஞர்</span></p>
         </div>
@@ -355,8 +365,8 @@
       <div class="grid md:grid-cols-4 gap-8">
         <div>
           <h3 class="text-xl font-bold mb-4">
-            <span lang="en">Premium Bricks</span>
-            <span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள்</span>
+            <span lang="en">PR Bricks</span>
+            <span lang="ta" class="font-tamil">பி.ஆர் செங்கற்கள்</span>
           </h3>
           <p>
             <span lang="en">Quality you can build on since 1990.</span>
@@ -394,7 +404,7 @@
           </h3>
           <p>123 Brick Lane, Chennai</p>
           <p>+91-98765-43210</p>
-          <p>info@premiumbricks.com</p>
+          <p>info@prbricks.com</p>
         </div>
         <div>
           <h3 class="text-xl font-bold mb-4">
@@ -409,7 +419,7 @@
         </div>
       </div>
       <div class="border-t border-gray-700 mt-8 pt-8 text-center">
-        <p>&copy; 2025 <span lang="en">Premium Bricks. All rights reserved.</span><span lang="ta" class="font-tamil">பிரீமியம் செங்கற்கள். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
+        <p>&copy; 2025 <span lang="en">PR Bricks. All rights reserved.</span><span lang="ta" class="font-tamil">பி.ஆர் செங்கற்கள். அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.</span></p>
       </div>
     </div>
   </footer>
